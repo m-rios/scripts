@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case $# in
+	2) MONTH=$1; INPUT_FN=$2;;
+	1) INPUT_FN=$1;;
+	*) echo "Usage: nomina [MONTH] FILE"; exit 1;;
+esac
+
+if [[ -z $MONTH ]]
+then
+	OUTPUT_FN="$(date +%Y_%m)_nomina.pdf"
+else
+	OUTPUT_FN="$(date +%Y)_${MONTH}_nomina.pdf"
+fi
+
+mv $INPUT_FN $OUTPUT_FN
